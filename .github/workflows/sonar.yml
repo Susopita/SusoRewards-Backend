@@ -40,10 +40,8 @@ jobs:
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Install cargo-tarpaulin (Fast)
-        run: |
-          curl -LsSf https://github.com/taiki-e/cargo-binstall/releases/latest/download/cargo-binstall-x86_64-unknown-linux-musl.tgz | tar zxf - -C ~/.cargo/bin
-          cargo binstall -y cargo-tarpaulin
+      - name: Install cargo-tarpaulin
+        uses: taiki-e/install-action@cargo-tarpaulin
 
       - name: Generate Coverage (Recompensas)
         run: |
