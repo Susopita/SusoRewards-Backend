@@ -29,12 +29,12 @@ jobs:
 
       - name: Install dependencies (Node)
         run: |
-          cd SusoRewards-Backend/afiliados
+          cd afiliados
           pnpm install
         
       - name: Run Backend Tests and Generate Coverage (Node)
         run: |
-          cd SusoRewards-Backend/afiliados
+          cd afiliados
           pnpm test:cov
 
       - name: Setup Rust
@@ -47,12 +47,12 @@ jobs:
 
       - name: Generate Coverage (Recompensas)
         run: |
-          cd SusoRewards-Backend/recompensas
+          cd recompensas
           cargo tarpaulin --out Xml --output-dir .
 
       - name: Generate Coverage (Notificaciones)
         run: |
-          cd SusoRewards-Backend/notificaciones
+          cd notificaciones
           cargo tarpaulin --out Xml --output-dir .
 
       - name: Install sonar-scanner
@@ -63,7 +63,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_BACKEND_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
-          cd SusoRewards-Backend
           sonar-scanner \
             -Dsonar.host.url="$SONAR_HOST_URL" \
             -Dsonar.token="$SONAR_TOKEN"
