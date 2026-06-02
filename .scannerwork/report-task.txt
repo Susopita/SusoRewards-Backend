@@ -1,0 +1,6 @@
+projectKey=susorewards_backend
+serverUrl=https://sonarqube.ingsoftware.lat
+serverVersion=26.5.0.122743
+dashboardUrl=https://sonarqube.ingsoftware.lat/dashboard?id=susorewards_backend
+ceTaskId=962b126b-537d-4df7-ae39-6b6c0fb41e4c
+ceTaskUrl=https://sonarqube.ingsoftware.lat/api/ce/task?id=962b126b-537d-4df7-ae39-6b6c0fb41e4c

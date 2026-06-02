@@ -1,5 +1,6 @@
 import { IEmpresaRepository } from '../../domain/repositories/IEmpresaRepository.js';
 import { Programa } from '../../domain/entities/Empresa.js';
+import crypto from 'node:crypto';
 
 export class ManagePrograma {
   constructor(private empresaRepo: IEmpresaRepository) {}
@@ -9,7 +10,7 @@ export class ManagePrograma {
     if (!empresa) throw new Error('Empresa no encontrada');
 
     const nuevoPrograma: Programa = {
-      id: Math.random().toString(36).substring(2, 9),
+      id: crypto.randomUUID(),
       name: data.name,
       pointsRule: data.pointsRule,
       active: data.active,
