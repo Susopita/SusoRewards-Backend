@@ -27,13 +27,33 @@ jobs:
         with:
           version: 9
 
-      - name: Install dependencies
-        run: pnpm install
+      - name: Install dependencies (Node)
+        run: |
+          cd afiliados
+          pnpm install
         
-      - name: Run Backend Tests and Generate Coverage
+      - name: Run Backend Tests and Generate Coverage (Node)
         run: |
           cd afiliados
           pnpm test:cov
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install cargo-tarpaulin (Fast)
+        run: |
+          curl -LsSf https://github.com/taiki-e/cargo-binstall/releases/latest/download/cargo-binstall-x86_64-unknown-linux-musl.tgz | tar zxf - -C ~/.cargo/bin
+          cargo binstall -y cargo-tarpaulin
+
+      - name: Generate Coverage (Recompensas)
+        run: |
+          cd recompensas
+          cargo tarpaulin --out Xml --output-dir .
+
+      - name: Generate Coverage (Notificaciones)
+        run: |
+          cd notificaciones
+          cargo tarpaulin --out Xml --output-dir .
 
       - name: Install sonar-scanner
         run: npm install -g sonarqube-scanner
