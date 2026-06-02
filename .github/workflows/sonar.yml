@@ -1,0 +1,35 @@
+name: SonarQube Backend Analysis
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonar-backend:
+    name: SonarQube Backend Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install sonar-scanner
+        run: npm install -g sonarqube-scanner
+
+      - name: Run Backend SonarQube Scan
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_BACKEND_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: |
+          sonar-scanner \
+            -Dsonar.host.url="$SONAR_HOST_URL" \
+            -Dsonar.token="$SONAR_TOKEN"

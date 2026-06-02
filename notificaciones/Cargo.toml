@@ -1,0 +1,18 @@
+[package]
+name = "notificaciones"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = "0.7.4"
+tokio = { version = "1.38.0", features = ["full"] }
+redis = { version = "0.25.4", features = ["tokio-comp", "aio"] }
+rdkafka = { version = "0.36.2", features = ["cmake-build"] }
+serde = { version = "1.0.203", features = ["derive"] }
+serde_json = "1.0.120"
+dotenvy = "0.15.7"
+tokio-stream = { version = "0.1.15", features = ["sync"] }
+async-trait = "0.1.80"
+tower-http = { version = "0.6.11", features = ["trace"] }
+tracing = "0.1.44"
+tracing-subscriber = "0.3.23"

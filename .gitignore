@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Rust build
+target/
+
+# Environment
+.env
+.env.local
+.env.*.local
+*.env
+
+# Build output
+dist/
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+
+# OS
+.DS_Store
+Thumbs.db
