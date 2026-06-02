@@ -40,6 +40,9 @@ jobs:
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
 
+      - name: Install System Dependencies for rdkafka
+        run: sudo apt-get update && sudo apt-get install -y cmake pkg-config libssl-dev libcurl4-openssl-dev libsasl2-dev zlib1g-dev
+
       - name: Install cargo-tarpaulin
         uses: taiki-e/install-action@cargo-tarpaulin
 
